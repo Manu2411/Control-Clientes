@@ -30,8 +30,7 @@ async function cargarClientes(){
       for(let cliente of clientes){
        let botonEliminar = '<a href="#" onclick="eliminarCliente(' + cliente.id + ')" class="btn btn-danger btn-circle btn-sm"><i class="bi bi-trash3"></i></a>';
        //let botonModificar = '<a href="#" onclick="modificarCliente(' + cliente.id + ')" class="btn btn-info btn-circle btn-sm"><i class="bi bi-pencil"></i></a>';
-       //Seguir con la codificacion para que despliegue el modal
-       let botonModificar = '<a href="#" onclick="" data-open="modal" class="btn btn-info btn-circle btn-sm"><i class="bi bi-pencil"></i></a>';
+       let botonModificar = '<button onclick="" class="btn btn-info btn-circle btn-sm" data-toggle="modal" data-target="#ventanaModal"><i class="bi bi-pencil"></i></button>';
 
        let telefonoTexto = (cliente.telefono == null || cliente.telefono == '') ? '-' : cliente.telefono;
 
@@ -46,8 +45,11 @@ async function cargarClientes(){
       document.querySelector('#clientes tbody').outerHTML = listadoHtml;
 }
 
-function showModal(){
-    const openM = document.querySelectorAll("")
+async function getInfoCliente(){
+    const request = await fetch('api/clientes/' + id, {
+                method: 'GET',
+                headers: getHeaders()
+              });
 }
 
 
