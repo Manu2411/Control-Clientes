@@ -29,8 +29,7 @@ async function cargarClientes(){
       //Se listan los datos para mostrarlos en forma ordenada en la tabla correspondiente <i class="bi bi-trash3"></i>
       for(let cliente of clientes){
        let botonEliminar = '<a href="#" onclick="eliminarCliente(' + cliente.id + ')" class="btn btn-danger btn-circle btn-sm"><i class="bi bi-trash3"></i></a>';
-       //let botonModificar = '<a href="#" onclick="modificarCliente(' + cliente.id + ')" class="btn btn-info btn-circle btn-sm"><i class="bi bi-pencil"></i></a>';
-       let botonModificar = '<button onclick="" class="btn btn-info btn-circle btn-sm" data-toggle="modal" data-target="#ventanaModal"><i class="bi bi-pencil"></i></button>';
+       let botonModificar = '<button onclick="getInfoCliente(' + cliente.id + ')" class="btn btn-info btn-circle btn-sm" data-toggle="modal" data-target="#ventanaModal"><i class="bi bi-pencil"></i></button>';
 
        let telefonoTexto = (cliente.telefono == null || cliente.telefono == '') ? '-' : cliente.telefono;
 
@@ -45,13 +44,16 @@ async function cargarClientes(){
       document.querySelector('#clientes tbody').outerHTML = listadoHtml;
 }
 
-async function getInfoCliente(){
+//Terminar de codificar esta función (Para que funcione correctamente, revisar todos los componentes)
+async function getInfoCliente (id){
     const request = await fetch('api/clientes/' + id, {
-                method: 'GET',
-                headers: getHeaders()
-              });
-}
+            method: 'GET',
+            headers: getHeaders()
+          });
+          const clientes = await request.json();
 
+        document.getElementById("txtNombre").value = clientes.nombre;
+}
 
 async function eliminarCliente (id){
 

@@ -9,4 +9,6 @@ public interface ClienteDao {
     List<Clientes> getClientes();
 
     void eliminar(Long id);
+
+    List<Clientes> getInfoClientes(Long id);
 }

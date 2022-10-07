@@ -28,4 +28,12 @@ public class ClienteDaoImp implements ClienteDao {
         Clientes clientes = entityManager.find(Clientes.class,id);
         entityManager.remove(clientes);
     }
+
+    @Override
+    public List<Clientes> getInfoClientes(Long id) {
+        String query="From Clientes";
+        List<Clientes> resultado = entityManager.createQuery(query).getResultList();
+
+        return resultado;
+    }
 }
