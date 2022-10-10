@@ -25,9 +25,8 @@ public class ClienteController {
         clienteDao.eliminar(id);
     }
 
-    @RequestMapping(value = "api/clientes/{id}")
+    @RequestMapping(value = "api/clientes/{id}", method = RequestMethod.GET )
     public List<Clientes> getInfoClientes(@PathVariable Long id){
-
         return clienteDao.getInfoClientes(id);
     }
 

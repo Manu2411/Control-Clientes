@@ -35,5 +35,6 @@ public class ClienteDaoImp implements ClienteDao {
         List<Clientes> resultado = entityManager.createQuery(query).getResultList();
 
         return resultado;
+
     }
 }

@@ -26,7 +26,7 @@ async function cargarClientes(){
 
       let listadoHtml = '';
 
-      //Se listan los datos para mostrarlos en forma ordenada en la tabla correspondiente <i class="bi bi-trash3"></i>
+      //Se listan los datos para mostrarlos en forma ordenada en la tabla correspondiente
       for(let cliente of clientes){
        let botonEliminar = '<a href="#" onclick="eliminarCliente(' + cliente.id + ')" class="btn btn-danger btn-circle btn-sm"><i class="bi bi-trash3"></i></a>';
        let botonModificar = '<button onclick="getInfoCliente(' + cliente.id + ')" class="btn btn-info btn-circle btn-sm" data-toggle="modal" data-target="#ventanaModal"><i class="bi bi-pencil"></i></button>';
@@ -52,7 +52,15 @@ async function getInfoCliente (id){
           });
           const clientes = await request.json();
 
-        document.getElementById("txtNombre").value = clientes.nombre;
+        //console.log(clientes);
+
+        for(let cli of clientes){
+            let name = cli.nombre;
+
+            alert(name);
+        }
+
+        //document.getElementById("txtNombre").value = clientes.nombre;
 }
 
 async function eliminarCliente (id){
