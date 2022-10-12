@@ -37,8 +37,14 @@ public class ClienteDaoImp implements ClienteDao {
         return resultado;
     }
 
+    //Revisar esta parte para que funcione el método de editar
     @Override
     public void editar(Clientes cliente) {
+        entityManager.merge(cliente);
+    }
+
+    @Override
+    public void registro(Clientes cliente) {
         entityManager.merge(cliente);
     }
 }

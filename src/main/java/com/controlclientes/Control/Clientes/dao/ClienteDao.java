@@ -13,4 +13,6 @@ public interface ClienteDao {
     List<Clientes> getInfoClientes(Long id);
 
     void editar(Clientes cliente);
+
+    void registro(Clientes cliente);
 }

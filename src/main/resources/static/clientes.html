@@ -26,6 +26,7 @@
 					<h2 class="heading-section">LISTADO DE CLIENTES</h2>
 				</div>
 			</div>
+			<button type="button" class="btn btn-dark" data-toggle="modal" data-target="#nuevoClienteModal">Nuevo Cliente</button>
 			<div class="row">
 				<div class="col-md-12">
 					<div class="table-wrap">
@@ -51,7 +52,7 @@
 		</div>
 	</section>
 
-		<!-- Maquetación del modal de modificación -->
+	<!-- Maquetación del modal de modificación de cliente -->
 	<div class="modal" id="ventanaModal" tabindex="-1" role="dialog" aria-labelledby="tituloVentana" aria-hidden="true">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
@@ -96,6 +97,57 @@
 				<div class="modal-footer">
 					<button class="btn btn-warning" data-dismiss="modal">Cerrar</button>
 					<button onclick="editarCliente()" class="btn btn-success" type="button">Actualizar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- Maquetación del modal de inserción de cliente -->
+	<div class="modal" id="nuevoClienteModal" tabindex="-1" role="dialog" aria-labelledby="titVentana" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 id="titVentana">Datos del Cliente</h5>
+					<button class="close" data-dismiss="modal" aria-label="Cerrar">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="alert alert-success">
+						<form>
+							<div class="form-row">
+								<div class="form-group col-md-6">
+									<label for="txtNombre">Nombre Cliente</label>
+									<input type="text" class="form-control" id="txtNombreCliente" placeholder="Ingrese Nombre">
+								</div>
+								<div class="form-group col-md-6">
+									<label for="txtApellido">Apellido Cliente</label>
+									<input type="text" class="form-control" id="txtApellidoCliente" placeholder="Ingrese Apellido">
+								</div>
+							</div>
+							<div class="form-row">
+								<div class="form-group col-md-6">
+									<label for="txtTelefono">Teléfono</label>
+									<input type="text" class="form-control" id="txtTelefonoCliente" placeholder="Ingrese Telefono">
+								</div>
+								<div class="form-group col-md-6">
+									<label for="txtCompra">Valor Compra</label>
+									<input type="text" class="form-control" id="txtCompraTotal" placeholder="Ingrese Valor Compra">
+								</div>
+							</div>
+							<div class="form-row">
+								<div class="form-group col-md-12">
+									<label for="txtDomicilio">Domicilio</label>
+									<input type="text" class="form-control" id="txtDomicilioCliente" placeholder="Ingrese Domicilio">
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button class="btn btn-warning" data-dismiss="modal">Cerrar</button>
+					<button onclick="registrarCliente()" class="btn btn-success" type="button">Agregar</button>
 				</div>
 			</div>
 		</div>

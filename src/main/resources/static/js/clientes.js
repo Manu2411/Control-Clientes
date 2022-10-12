@@ -12,6 +12,26 @@ function getHeaders(){
         };
 }
 
+//Función para el registro de nuevos clientes en la base de datos
+async function registrarCliente(){
+    let datoCliente = {};
+
+        datoCliente.apellido = document.getElementById("txtApellidoCliente").value;
+        datoCliente.nombre = document.getElementById("txtNombreCliente").value;
+        datoCliente.domicilio = document.getElementById("txtDomicilioCliente").value;
+        datoCliente.telefono = document.getElementById("txtTelefonoCliente").value;
+        datoCliente.compra = parseFloat(document.getElementById("txtCompraTotal").value);
+
+        const request = await fetch('api/clientes/', {
+                    method: 'POST',
+                    headers: getHeaders(),
+                    body: JSON.stringify(datoCliente)
+                  });
+
+        alert("Cliente Ingresado con Éxito");
+        location.reload();
+}
+
 /*Funcion que solicita los datos guardadis de los usuarios
   de forma asincrona.
 */
@@ -74,7 +94,7 @@ async function editarCliente(){
     datosCliente.telefono = document.getElementById("txtTelefono").value;
     datosCliente.compra = parseFloat(document.getElementById("txtCompra").value);
 
-    const request = await fetch('api/clientes/', {
+    const request = await fetch('api/cliente/', {
                 method: 'POST',
                 headers: getHeaders(),
                 body: JSON.stringify(datosCliente)
