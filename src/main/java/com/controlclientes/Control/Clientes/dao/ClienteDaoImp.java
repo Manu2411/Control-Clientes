@@ -31,10 +31,14 @@ public class ClienteDaoImp implements ClienteDao {
 
     @Override
     public List<Clientes> getInfoClientes(Long id) {
-        String query="From Clientes";
+        String query="From Clientes WHERE id = " + id ;
         List<Clientes> resultado = entityManager.createQuery(query).getResultList();
 
         return resultado;
+    }
 
+    @Override
+    public void editar(Clientes cliente) {
+        entityManager.merge(cliente);
     }
 }

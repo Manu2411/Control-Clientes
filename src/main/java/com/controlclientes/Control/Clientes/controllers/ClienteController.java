@@ -27,7 +27,13 @@ public class ClienteController {
 
     @RequestMapping(value = "api/clientes/{id}", method = RequestMethod.GET )
     public List<Clientes> getInfoClientes(@PathVariable Long id){
+
         return clienteDao.getInfoClientes(id);
+    }
+
+    @RequestMapping(value = "api/clientes", method = RequestMethod.POST)
+    public void editarCliente(@RequestBody Clientes cliente){
+        clienteDao.editar(cliente);
     }
 
     /*@RequestMapping(value = "clientes/{id}", method = RequestMethod.GET)

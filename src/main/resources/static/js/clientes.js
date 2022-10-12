@@ -44,7 +44,7 @@ async function cargarClientes(){
       document.querySelector('#clientes tbody').outerHTML = listadoHtml;
 }
 
-//Terminar de codificar esta función (Para que funcione correctamente, revisar todos los componentes)
+//Función para mostrar la información del cliente en el Modal para poder Editarla
 async function getInfoCliente (id){
     const request = await fetch('api/clientes/' + id, {
             method: 'GET',
@@ -54,15 +54,37 @@ async function getInfoCliente (id){
 
         //console.log(clientes);
 
-        for(let cli of clientes){
-            let name = cli.nombre;
-
-            alert(name);
+        for(let clie of clientes){
+            document.getElementById("txtNombre").value = clie.nombre;
+            document.getElementById("txtApellido").value = clie.apellido;
+            document.getElementById("txtTelefono").value = clie.telefono;
+            document.getElementById("txtDomicilio").value = clie.domicilio;
+            document.getElementById("txtCompra").value = clie.compra;
         }
-
-        //document.getElementById("txtNombre").value = clientes.nombre;
 }
 
+//Función para editar la información del cliente seleccionado
+//(Seguir modificando para que se pueda modificar y no agregue como uno nuevo el registro dado)
+async function editarCliente(){
+    let datosCliente = {};
+
+    datosCliente.apellido = document.getElementById("txtApellido").value;
+    datosCliente.nombre = document.getElementById("txtNombre").value;
+    datosCliente.domicilio = document.getElementById("txtDomicilio").value;
+    datosCliente.telefono = document.getElementById("txtTelefono").value;
+    datosCliente.compra = parseFloat(document.getElementById("txtCompra").value);
+
+    const request = await fetch('api/clientes/', {
+                method: 'POST',
+                headers: getHeaders(),
+                body: JSON.stringify(datosCliente)
+              });
+
+    alert("Información Actualizada con Éxito");
+    location.reload();
+}
+
+//Función para eliminar registro de cliente por medio del Id
 async function eliminarCliente (id){
 
     if(!confirm('¿Desea eliminar este Cliente?')){

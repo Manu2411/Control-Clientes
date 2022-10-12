@@ -11,4 +11,6 @@ public interface ClienteDao {
     void eliminar(Long id);
 
     List<Clientes> getInfoClientes(Long id);
+
+    void editar(Clientes cliente);
 }
