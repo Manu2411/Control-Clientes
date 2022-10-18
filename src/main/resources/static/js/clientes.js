@@ -13,6 +13,7 @@ function getHeaders(){
 }
 
 //Función para el registro de nuevos clientes en la base de datos
+//Funcionando al 100%
 async function registrarCliente(){
     let datoCliente = {};
 
@@ -35,6 +36,7 @@ async function registrarCliente(){
 /*Funcion que solicita los datos guardadis de los usuarios
   de forma asincrona.
 */
+//Funcionando al 100%
 async function cargarClientes(){
       const request = await fetch('api/clientes', {
         method: 'GET',
@@ -65,6 +67,7 @@ async function cargarClientes(){
 }
 
 //Función para mostrar la información del cliente en el Modal para poder Editarla
+//Funcionando al 100%
 async function getInfoCliente (id){
     const request = await fetch('api/clientes/' + id, {
             method: 'GET',
@@ -80,14 +83,16 @@ async function getInfoCliente (id){
             document.getElementById("txtTelefono").value = clie.telefono;
             document.getElementById("txtDomicilio").value = clie.domicilio;
             document.getElementById("txtCompra").value = clie.compra;
+            document.getElementById("txtId").value = clie.id;
         }
 }
 
 //Función para editar la información del cliente seleccionado
-//(Seguir modificando para que se pueda modificar y no agregue como uno nuevo el registro dado)
+//Funcionando al 100%
 async function editarCliente(){
     let datosCliente = {};
 
+    datosCliente.id = document.getElementById("txtId").value;
     datosCliente.apellido = document.getElementById("txtApellido").value;
     datosCliente.nombre = document.getElementById("txtNombre").value;
     datosCliente.domicilio = document.getElementById("txtDomicilio").value;
@@ -95,7 +100,7 @@ async function editarCliente(){
     datosCliente.compra = parseFloat(document.getElementById("txtCompra").value);
 
     const request = await fetch('api/cliente/', {
-                method: 'POST',
+                method: 'PUT',
                 headers: getHeaders(),
                 body: JSON.stringify(datosCliente)
               });
@@ -105,6 +110,7 @@ async function editarCliente(){
 }
 
 //Función para eliminar registro de cliente por medio del Id
+//Funcionando al 100%
 async function eliminarCliente (id){
 
     if(!confirm('¿Desea eliminar este Cliente?')){

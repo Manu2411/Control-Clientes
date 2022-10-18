@@ -31,7 +31,7 @@ public class ClienteController {
         return clienteDao.getInfoClientes(id);
     }
 
-    @RequestMapping(value = "api/cliente", method = RequestMethod.POST)
+    @RequestMapping(value = "api/cliente", method = RequestMethod.PUT)
     public void editarCliente(@RequestBody Clientes cliente){
         clienteDao.editar(cliente);
     }
